@@ -8,13 +8,15 @@ Index page that defines F3 functions to produce views and maintain data.*/
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-session_start();
-
 
 //Require the autoload file
 require_once('vendor/autoload.php');
 require_once ('model/data-layer.php');
 require_once ('model/validate.php');
+require_once ('model/Member.php');
+require_once ('model/PremiumMember.php');
+
+session_start();
 
 //Instantiate the F3 Base class
 $f3 = Base::instance();
@@ -73,7 +75,8 @@ $f3 -> route('GET|POST /personalInformation', function($f3) {
             $_SESSION['gender'] = $_POST['gender'];
             $_SESSION['phone'] = $_POST['phone'];*/
 
-            if(isset($_POST['member'])){
+
+            if(($_POST['member'] == 'member')){
                 $object = new PremiumMember($_POST['Fname'], $_POST['Lname'], $_POST['age'], $_POST['gender'],
                     $_POST['phone']);
                 $_SESSION['isPremium'] = true;
@@ -137,10 +140,10 @@ $f3 -> route('GET|POST /profile', function($f3) {
             $_SESSION['member']->setSeeking($_POST['seeking']);
             $_SESSION['member']->setBio($_POST['bio']);
 
-            if($_SESSION['isPremium'] == true){
+            if($_SESSION['isPremium'] == true) {
                 $f3->reroute('interests');
                 }
-            else{
+            else {
                 $f3->reroute('summary');
             }
 
