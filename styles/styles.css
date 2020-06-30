@@ -1,0 +1,49 @@
+img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    border-radius: 25px;
+}
+
+.welcome {
+    text-align: center;
+}
+
+
+.comment {
+    font-style: italic;
+    text-align: center;
+}
+
+#makeProfile{
+    border-radius: 50px;
+}
+
+a {
+    text-color: white;
+}
+
+#privacy {
+    margin-top: 20px;
+    border-style: solid;
+}
+
+#bioTextBox {
+    margin-top: 20px;
+}
+
+.interest {
+    padding: 50px;
+}
+
+#summaryBox {
+    border-style: solid;
+}
+
+#bioBox {
+    border-style: solid;
+}
+
+.profileInfo{
+    border-bottom-style: solid;
+}
