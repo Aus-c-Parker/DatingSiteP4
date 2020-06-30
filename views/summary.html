@@ -1,0 +1,56 @@
+<!--
+Author: Austin Parker
+Date: 6-20-2020
+home.html
+Home page of dating website defined by F3 view.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Dating Site</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h4>Dating Site</h4>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-5" id="summaryBox">
+            <p class="profileInfo">Name: {{ @SESSIONS.member->getFname() }} {{ @SESSIONS.member->getLname() }} </p>
+            <p class="profileInfo">Gender: {{ @SESSIONS.member->getGender() }} </p>
+            <p class="profileInfo">Age: {{ @SESSIONS.member->getAge() }} </p>
+            <p class="profileInfo">Phone: {{ @SESSIONS.member->getPhone() }} </p>
+            <p class="profileInfo">Email: {{ @SESSIONS.member->getEmail() }} </p>
+            <p class="profileInfo">State: {{ @SESSIONS.member->getState() }} </p>
+            <p class="profileInfo">Seeking: {{ @SESSIONS.member->getSeeking() }} </p>
+            <check if="{{ get_class($_SESSION['member']) == 'PremiumMember' }}">
+                <p class="profileInfo2">Interests: {{ implode(@SESSIONS.member->getInDoorInterests(), ", ") }}
+                    {{ implode(@SESSIONS.member->getOutDoorInterests(), ",  ")}}  </p>
+            </check>
+        </div>
+
+        <div class="col-5" id="bioBox">
+            <img src="images/profile.png" alt="profile">
+            <p>Biography</p>
+            <p>{{ @SESSION.member->getBio() }}</p>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

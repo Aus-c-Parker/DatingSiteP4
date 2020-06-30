@@ -8,7 +8,7 @@ class Controller
     /**
      * Controller constructor.
      * @param $f3
-     * @param #validate
+     * @param $validate
      */
     public function __construct($f3, $validate)
     {
@@ -73,13 +73,18 @@ class Controller
                 if(($_POST['member'] == 'member')){
                     $object = new PremiumMember($_POST['Fname'], $_POST['Lname'], $_POST['age'], $_POST['gender'],
                         $_POST['phone']);
-                    $_SESSION['isPremium'] = true;
                 }
                 else {
                     $object = new Member($_POST['Fname'], $_POST['Lname'], $_POST['age'], $_POST['gender'],
                         $_POST['phone']);
                     $_SESSION['isPremium'] = false;
                 }
+
+                $object->setFname($_POST['Fname']);
+                $object->setLname($_POST['Lname']);
+                $object->setAge($_POST['age']);
+                $object->setGender($_POST['gender']);
+                $object->setPhone($_POST['phone']);
 
                 $_SESSION['member'] = $object;
 
@@ -93,7 +98,7 @@ class Controller
 
     public function profile()
     {
-        $state = getState();
+        $state = $this->_validate->getState();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -133,7 +138,7 @@ class Controller
                 $_SESSION['member']->setSeeking($_POST['seeking']);
                 $_SESSION['member']->setBio($_POST['bio']);
 
-                if($_SESSION['isPremium'] == true) {
+                if(get_class($_SESSION['member']) == 'PremiumMember') {
                     $this->_f3->reroute('interests');
                 }
                 else {
@@ -185,5 +190,6 @@ class Controller
     {
         $view = new Template();
         echo $view->render('views/summary.html');
+        //print_r($_SESSION['member']);
     }
 }
