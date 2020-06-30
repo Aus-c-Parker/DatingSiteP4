@@ -24,7 +24,7 @@ class Validate
 
     function validState($state)
     {
-        $validStates = getState();
+        $validStates = $this->getState();
         return in_array($state, $validStates);
     }
 
