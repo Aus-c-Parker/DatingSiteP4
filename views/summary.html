@@ -26,16 +26,16 @@ Home page of dating website defined by F3 view.
 <div class="container">
     <div class="row">
         <div class="col-5" id="summaryBox">
-            <p class="profileInfo">Name: {{ @SESSIONS.member->getFname() }} {{ @SESSIONS.member->getLname() }} </p>
-            <p class="profileInfo">Gender: {{ @SESSIONS.member->getGender() }} </p>
-            <p class="profileInfo">Age: {{ @SESSIONS.member->getAge() }} </p>
-            <p class="profileInfo">Phone: {{ @SESSIONS.member->getPhone() }} </p>
-            <p class="profileInfo">Email: {{ @SESSIONS.member->getEmail() }} </p>
-            <p class="profileInfo">State: {{ @SESSIONS.member->getState() }} </p>
-            <p class="profileInfo">Seeking: {{ @SESSIONS.member->getSeeking() }} </p>
+            <p class="profileInfo">Name: {{ @SESSION.member->getFname() }} {{ @SESSION.member->getLname() }} </p>
+            <p class="profileInfo">Gender: {{ @SESSION.member->getGender() }} </p>
+            <p class="profileInfo">Age: {{ @SESSION.member->getAge() }} </p>
+            <p class="profileInfo">Phone: {{ @SESSION.member->getPhone() }} </p>
+            <p class="profileInfo">Email: {{ @SESSION.member->getEmail() }} </p>
+            <p class="profileInfo">State: {{ @SESSION.member->getState() }} </p>
+            <p class="profileInfo">Seeking: {{ @SESSION.member->getSeeking() }} </p>
             <check if="{{ get_class($_SESSION['member']) == 'PremiumMember' }}">
-                <p class="profileInfo2">Interests: {{ implode(@SESSIONS.member->getInDoorInterests(), ", ") }}
-                    {{ implode(@SESSIONS.member->getOutDoorInterests(), ",  ")}}  </p>
+                <p class="profileInfo2">Interests: {{ implode(@SESSION.member->getInDoorInterests(), ", ") }}
+                    {{ implode(@SESSION.member->getOutDoorInterests(), ",  ")}}  </p>
             </check>
         </div>
 
