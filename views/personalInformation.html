@@ -60,9 +60,11 @@ Home page of dating website defined by F3 view.
                     </div>
 
                         <b>Male</b>
-                        <input type="radio" class="form-control" id="male" name="gender" value="male">
+                        <input type="radio" class="form-control" id="male" name="gender" value="male"
+                    <check if="{{ @correct['gender'] == 'male' }}">checked="checked"</check>>
                         <b>Female</b>
-                        <input type="radio" class="form-control" id="female" name="gender" value="female">
+                        <input type="radio" class="form-control" id="female" name="gender" value="female"
+                   <check if="{{ @correct['gender'] == 'female' }}">checked="checked"</check>>
 
                         <check if="{{ isset(@errors['gender']) }}">
                             {{ @errors['gender'] }}
@@ -71,15 +73,18 @@ Home page of dating website defined by F3 view.
 
                     <div class="form-group">
                         <label for="phone"><b>Phone Number</b></label>
-                        <input type="text" class="form-control" id="phone" name="phone">
-                        <check if="{{ isset(@correct['phone']) }}">
-                            {{ @correct['phone'] }}
+                        <input type="text" class="form-control" id="phone" name="phone" <check if="{{ isset(@correct['age']) }}">
+                    value="{{ @correct['phone'] }}</check>>
+                        <check if="{{ isset(@errors['gender']) }}">
+                            {{ @errors['phone'] }}
                         </check>
+
                     </div>
 
                     <div class="form-group">
                         <b>Premium Membership</b>
-                        <input type="checkbox" class="form-control" id="member" name="member" value="member">
+                        <input type="checkbox" class="form-control" id="member" name="member" value="member"
+                        <check if="{{ isset(@correct['member']) }}">checked="checked"</check>>
                         <label for="member">Sign me up for a Premium Account</label>
                     </div>
                 </fieldset>
