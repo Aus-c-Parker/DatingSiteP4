@@ -51,7 +51,7 @@ class Controller
                 $this->_f3->set('errors["gender"]', "Please select a gender");
             }
             else {
-                $this->_f3->set('correct["gender"]', $_POST['gender']);
+                    $this->_f3->set('correct["gender"]', $_POST['gender']);
             }
 
             if (!$this->_validate->validPhone($_POST['phone'])) {
@@ -59,6 +59,10 @@ class Controller
             }
             else {
                 $this->_f3->set('correct["phone"]', $_POST['phone']);
+            }
+
+            if($_POST['member'] == 'member') {
+              $this->_f3->set('correct["member"]', $_POST['member']);
             }
 
             if (empty($this->_f3->get('errors'))) {
@@ -156,17 +160,26 @@ class Controller
 
     public function interests()
     {
-        $indoor = getIndoor();
-        $outdoor = getOutdoor();
+        $indoor = $this->_validate->getIndoor();
+        $outdoor = $this->_validate->getOutdoor();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            var_dump($_POST['indoor']);
+            var_dump($_POST['outdoor']);
 
             if (!$this->_validate->validIndoor($_POST['indoor'])) {
                 $this->_f3->set('errors["indoor"]', "Please provide an indoor interest");
             }
+            else {
+                $this->_f3->set('correct["indoor"]', $_POST[$indoor]);
+            }
 
             if (!$this->_validate->validOutdoor($_POST['outdoor'])) {
                 $this->_f3->set('errors["outdoor"]', "Please provide an indoor interest");
+            }
+            else {
+                $this->_f3->set('correct["outdoor"]', $_POST['outdoor']);
             }
 
             if (empty($this->_f3->get('errors'))) {
@@ -175,8 +188,10 @@ class Controller
 
                 $_SESSION['member']->setInDoorInterests($_POST['indoor']);
                 $_SESSION['member']->setOutDoorInterests($_POST['outdoor']);
+
+                $this->_f3->reroute('summary');
             }
-            $this->_f3->reroute('summary');
+
         }
 
         $this->_f3->set('indoor', $indoor);
@@ -188,8 +203,10 @@ class Controller
 
     public function summary()
     {
+
+        var_dump($_SESSION['member']);
         $view = new Template();
         echo $view->render('views/summary.html');
-        //print_r($_SESSION['member']);
+        session_destroy();
     }
 }

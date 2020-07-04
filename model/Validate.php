@@ -28,17 +28,7 @@ class Validate
         return in_array($state, $validStates);
     }
 
-    function validIndoor($indoor)
-    {
-        $validInterests = getIndoor();
-        return in_array($indoor, $validInterests);
-    }
 
-    function validOutdoor($outdoor)
-    {
-        $validInterests = getOutdoor();
-        return in_array($outdoor, $validInterests);
-    }
 
     function getState()
     {
@@ -53,12 +43,44 @@ class Validate
 
     function getIndoor()
     {
-        return array("tv", "movies", "cooking", "board games", "puzzles", "reading", "playing cards", "video games");
+        $indoor = array("tv", "movies", "cooking", "board games", "puzzles", "reading", "playing cards", "video games");
+        return $indoor;
     }
 
     function getOutdoor()
     {
-        return array("hiking", "biking", "swimming", "collecting", "walking", "climbing");
+        $outdoor = array("hiking", "biking", "swimming", "collecting", "walking", "climbing");
+        return $outdoor;
+    }
+
+    function validIndoor($indoor)
+    {
+        $validIndoor = $this->getIndoor();
+        if (isset($indoor)) {
+            foreach ($indoor as $keys) {
+                if (!in_array($keys, $validIndoor)){
+                    return false;
+                }
+
+            }
+            return true;
+        }
+        return false;
+    }
+
+    function validOutdoor($outdoor)
+    {
+        $validOutdoor = $this->getOutdoor();
+        if (isset($outdoor)) {
+            foreach ($outdoor as $keys) {
+                if (!in_array($keys, $validOutdoor)){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }
+
 
