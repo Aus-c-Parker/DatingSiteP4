@@ -1,0 +1,15 @@
+{
+  "name": "aparker/DatingSite",
+  "authors": [
+    {
+    "name": "Austin Parker",
+    "email": "aparker24@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core" : "dev-master"
+  },
+  "autoload": {
+    "classmap": ["classes/", "model/", "controllers/"]
+  }
+}
