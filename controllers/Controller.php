@@ -165,14 +165,14 @@ class Controller
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-/*            var_dump($_POST['indoor']);
-            var_dump($_POST['outdoor']);
+            /*var_dump($_POST['indoor']);
+            var_dump($_POST['outdoor']);*/
 
             if (!$this->_validate->validIndoor($_POST['indoor'])) {
                 $this->_f3->set('errors["indoor"]', "Please provide an indoor interest");
             }
             else {
-                $this->_f3->set('correct["indoor"]', $_POST[$indoor]);
+                $this->_f3->set('correct["indoor"]', $_POST['indoor']);
             }
 
             if (!$this->_validate->validOutdoor($_POST['outdoor'])) {
@@ -180,7 +180,7 @@ class Controller
             }
             else {
                 $this->_f3->set('correct["outdoor"]', $_POST['outdoor']);
-            }*/
+            }
 
             if (empty($this->_f3->get('errors'))) {
                 /*$_SESSION['indoor'] = $_POST['indoor'];
