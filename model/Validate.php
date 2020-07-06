@@ -56,9 +56,12 @@ class Validate
     function validIndoor($indoor)
     {
         $validIndoor = $this->getIndoor();
-        if (isset($indoor)) {
-            foreach ($indoor as $keys) {
-                if (!in_array($keys, $validIndoor)){
+        if (isset($indoor))
+        {
+            foreach ($indoor as $interest)
+            {
+                if (!in_array($interest, $validIndoor))
+                {
                     return false;
                 }
 
@@ -72,8 +75,8 @@ class Validate
     {
         $validOutdoor = $this->getOutdoor();
         if (isset($outdoor)) {
-            foreach ($outdoor as $keys) {
-                if (!in_array($keys, $validOutdoor)){
+            foreach ($outdoor as $interest) {
+                if (!in_array($interest, $validOutdoor)){
                     return false;
                 }
             }

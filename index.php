@@ -5,8 +5,8 @@ index.php
 Index page that defines F3 functions to produce views and maintain data.*/
 
 //Turn on error reporting
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
 
 //Require the autoload file

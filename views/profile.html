@@ -32,7 +32,7 @@ Home page of dating website defined by F3 view.
                     <div class="form-group">
                         <label for="email"><b>Email</b></label>
                         <input type="text" class="form-control" id="email" name="email" <check if="{{ isset(@correct['email']) }}">
-                        value = "{{ @errors['email'] }}"
+                        value = "{{ @correct['email'] }}"
                     </check>>
                         <check if="{{ isset(@errors['email']) }}">
                             {{ @errors['email'] }}
