@@ -36,7 +36,7 @@ Home page of dating website defined by F3 view.
                             value = "{{ @correct['Fname'] }}"
                         </check>>
                         <check if="{{ isset(@errors['Fname']) }}">
-                            {{ @correct['Fname'] }}
+                            {{ @errors['Fname'] }}
                         </check>
                     </div>
                     <div class="form-group">
@@ -73,9 +73,9 @@ Home page of dating website defined by F3 view.
 
                     <div class="form-group">
                         <label for="phone"><b>Phone Number</b></label>
-                        <input type="text" class="form-control" id="phone" name="phone" <check if="{{ isset(@correct['age']) }}">
-                    value="{{ @correct['phone'] }}</check>>
-                        <check if="{{ isset(@errors['gender']) }}">
+                        <input type="text" class="form-control" id="phone" name="phone" <check if="{{ isset(@correct['phone']) }}">
+                    value="{{ @correct['phone'] }}"</check>>
+                        <check if="{{ isset(@errors['phone']) }}">
                             {{ @errors['phone'] }}
                         </check>
 
